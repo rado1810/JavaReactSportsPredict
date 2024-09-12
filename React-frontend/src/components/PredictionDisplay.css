@@ -1,0 +1,72 @@
+.predictions {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    user-select: none;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    display: flex;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    padding: 10px;
+}
+
+
+.table-header {
+    display: flex;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.table-row {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+   
+}
+
+.table-header div, .table-row div {
+  
+    flex: 1;
+    padding: 8px;
+    text-align: left;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.page-link {
+    margin: 0 5px;
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: inline-block;
+}
+
+.page-link.active {
+    font-weight: bold;
+    color: #333;
+    text-decoration: underline;
+}
+
+.page-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

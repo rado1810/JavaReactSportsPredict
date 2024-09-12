@@ -1,0 +1,67 @@
+/* Header.css */
+
+/* Фоново изображение на цялата страница */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('../assets/images/f1.jpg'); /* Път към фоновото изображение */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* Стилове за header */
+  header {
+    position: relative;
+    width: 100%;
+    height: 60px; /* Височина на навигационната лента */
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачен черен фон за контраст */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Подравнява съдържанието вдясно */
+    padding: 0 20px; /* Добавя малко вътрешно разстояние от двете страни */
+    box-sizing: border-box; /* Включва padding в ширината на елемента */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    margin: 0 15px;
+  }
+  .prediction a {
+    display: flex;
+    font-size : 60px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  button, a {
+    background: none;
+    border: none;
+    color: white; /* Цвят на текста */
+    font-size: 16px; /* Размер на шрифта */
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  
+  button:hover, a:hover {
+    text-decoration: underline;
+  }
+  

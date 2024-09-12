@@ -1,0 +1,29 @@
+/* src/styles/HomePage.css */
+.homepage {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/images/f1.jpg'); /* относителен път към снимката */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  .homepage h1 {
+    color: white;
+    font-size: 48px;
+    margin: 0;
+  }
+  
+  .homepage a {
+    color: white;
+    text-decoration: none;
+    font-size: 32px;
+    
+  }
+  
