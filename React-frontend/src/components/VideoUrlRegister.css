@@ -1,14 +1,10 @@
-/* Центриране на формата и заглавието */
-
-
-
 
 .form-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-     /* Цялата височина на прозореца */
+  
     
 }
 
@@ -18,17 +14,17 @@
     color: #ffffff;
 }
 
-/* Стил за формата */
+
 .form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Максимална ширина на формата */
+    max-width: 400px; 
 }
 
-/* Стил за всяка група в полетата */
+
 .form-group {
     margin-bottom: 15px;
 }
@@ -40,16 +36,16 @@ label {
     color: #555;
 }
 
-/* Поле за въвеждане */
+
 .input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* За да се вмести в контейнера */
+    box-sizing: border-box; 
 }
 
-/* Стил за бутона */
+
 .submit-btn {
     width: 100%;
     padding: 10px;
@@ -62,7 +58,7 @@ label {
     transition: background-color 0.3s ease;
 }
 
-/* Стил при задържане на мишката върху бутона */
+
 .submit-btn:hover {
     background-color: #0056b3;
 }

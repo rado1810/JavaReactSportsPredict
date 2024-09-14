@@ -103,7 +103,7 @@ const AdminVideoList = () => {
               </td>
               <td>
                 <button onClick={() => approveVideo(video.id)}>Approve</button>
-                <button onClick={() => deleteVideo(video.id)}>Delete</button> {/* Нов бутон за изтриване */}
+                <button onClick={() => deleteVideo(video.id)}>Delete</button> 
               </td>
             </tr>
           ))}

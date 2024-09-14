@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
-import './VideoUrlRegister.css'; // Импортиране на CSS файла
+import './VideoUrlRegister.css'; 
 
 const VideoUrlRegister = () => {
     const [url, setUrl] = useState('');

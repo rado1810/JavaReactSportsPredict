@@ -7,7 +7,7 @@ const PredictionDisplay = () => {
     const [predictions, setPredictions] = useState([]);
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [searchQuery, setSearchQuery] = useState(''); // State for search query
+    const [searchQuery, setSearchQuery] = useState(''); 
     const predictionsPerPage = 10;
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
@@ -51,7 +51,7 @@ const PredictionDisplay = () => {
     };
 
     const filteredPredictions = predictions.filter((prediction) =>
-        prediction.sport.toLowerCase().includes(searchQuery.toLowerCase()) // Filter based on sport
+        prediction.sport.toLowerCase().includes(searchQuery.toLowerCase()) 
     );
 
     if (error) {
