@@ -10,4 +10,6 @@ public interface CommentService {
     void createComment(CommentDto commentDto);
 
     List<CommentDto> allComment();
+
+    boolean deleteComment(Long id);
 }

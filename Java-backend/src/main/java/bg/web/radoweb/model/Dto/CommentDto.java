@@ -5,6 +5,8 @@ package bg.web.radoweb.model.Dto;
 import java.time.LocalDateTime;
 
 public class CommentDto {
+
+    private Long id;
     private String author;
 
     private LocalDateTime created;
@@ -15,6 +17,15 @@ public class CommentDto {
 
     public CommentDto(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public CommentDto setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public String getAuthor() {

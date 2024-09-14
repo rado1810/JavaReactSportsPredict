@@ -11,7 +11,7 @@ const Comments = () => {
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
-   
+    // Проверка за валиден токен и сесия
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!isAuthenticated || !token) {
@@ -19,7 +19,7 @@ const Comments = () => {
         }
     }, [isAuthenticated, navigate]); 
 
-   
+    // Извличане на коментарите
     useEffect(() => {
         const fetchComments = async () => {
             const token = localStorage.getItem('token');
@@ -37,7 +37,9 @@ const Comments = () => {
                 }
 
                 const data = await response.json();
+              
                 setComments(data);
+               
             } catch (error) {
                 console.error('Error fetching comment data:', error);
                 setError('Failed to fetch comment data');
@@ -46,19 +48,48 @@ const Comments = () => {
 
         fetchComments();
     }, []); 
+    
+    // Функция за изтриване на коментар
+    const deleteComment = async (id) => {
+        const token = localStorage.getItem('token');
+        console.log(id)
+        
+        try {
+            const response = await fetch(`http://localhost:8080/api/allComment${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to delete comment');
+            }
 
+            // Обновяване на списъка с коментари след успешно изтриване
+            setComments(comments.filter((comment) => comment.id !== id));
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+            setError('Failed to delete comment');
+        }
+    };
+    
+    // Показване на съобщение за грешка
     if (error) {
         return <div className="error-message">{error}</div>; 
     }
 
+    // Зареждане на коментарите
     if (!comments.length) {
         return <div>Loading...</div>; 
     }
 
+    // Логика за пагинация
     const indexOfLastComment = currentPage * commentsPerPage;
     const indexOfFirstComment = indexOfLastComment - commentsPerPage;
     const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
-   
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
@@ -69,14 +100,23 @@ const Comments = () => {
                     <div className="table-header">
                         <div>Author</div>
                         <div>Comment</div>
-                    
+                        <div>Actions</div>
                     </div>
-                    {currentComments.map((comment, index) => (
-                        <div className="table-row" key={index}>
-                          
+                    {currentComments.map((comment) => (
+                        
+                        <div className="table-row" key={comment.id} >
+                            
                             <div>{comment.author}</div>
                             <div>{comment.textContent}</div>
-                          
+                            <div>
+                            
+                                <button 
+                                    className="delete-button" 
+                                    onClick={() => deleteComment(comment.id)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
                         </div>
                     ))}
                 </div>

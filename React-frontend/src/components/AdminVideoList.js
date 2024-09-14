@@ -58,8 +58,9 @@ const AdminVideoList = () => {
   };
 
   const deleteVideo = async (videoId) => {
+   console.log(videoId)
     try {
-      const response = await fetch(`http://localhost:8080/api/${videoId}`, {
+      const response = await fetch(`http://localhost:8080/api/adminUrl${videoId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

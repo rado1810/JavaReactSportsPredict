@@ -65,8 +65,7 @@ public class AdminController {
         }
 
     }
-    @DeleteMapping("{videoId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/adminUrl{videoId}")
     public ResponseEntity<String> deleteVideo(@PathVariable Long videoId){
         boolean approveVideo = adminService.deleteVideo(videoId);
         if (approveVideo){

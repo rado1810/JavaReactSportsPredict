@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -40,8 +41,20 @@ public class CommentServiceImpl implements CommentService {
     }
     private CommentDto mapToDto(Comment comment){
         CommentDto commentDto=new CommentDto();
+        commentDto.setId(comment.getId());
         commentDto.setAuthor(comment.getAuthor().getUsername());
         commentDto.setTextContent(comment.getTextContent());
         return commentDto;
+    }
+
+    @Override
+    public boolean deleteComment(Long id) {
+        boolean commentIsExists = commentRepository.existsById(id);
+        if (commentIsExists){
+            commentRepository.deleteById(id);
+            return true;
+        }
+
+        return false;
     }
 }
