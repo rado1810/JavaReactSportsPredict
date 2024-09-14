@@ -2,7 +2,6 @@ package bg.web.radoweb.service;
 
 import bg.web.radoweb.model.Dto.*;
 
-import bg.web.radoweb.model.VideoUrl;
 import jakarta.servlet.http.HttpServletRequest;
 
 public interface UserService {

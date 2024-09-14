@@ -1,9 +1,8 @@
 package bg.web.radoweb.service.Impl;
 
-import bg.web.radoweb.config.JwtTokenUtil;
+
 import bg.web.radoweb.model.User;
 import bg.web.radoweb.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

@@ -10,7 +10,6 @@ public interface AdminService {
     List<PredictionMatchDto> allPredict();
     void registerVideoUrl(VideoUrlDto videoUrlDto);
     List<VideoUrlDto> allVideoNotConfirm();
-
     boolean approveVideo(Long videoId);
     boolean deleteVideo(Long videoId);
 }

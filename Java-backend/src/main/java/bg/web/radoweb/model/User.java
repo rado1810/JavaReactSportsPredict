@@ -1,8 +1,6 @@
 package bg.web.radoweb.model;
 
 import jakarta.persistence.*;
-
-import java.util.List;
 import java.util.Set;
 @Entity
 @Table(name = "users")

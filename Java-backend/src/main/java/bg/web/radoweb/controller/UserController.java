@@ -12,11 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,19 +58,13 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO) {
-//        try {
-//            Authentication authentication = authenticationManager.authenticate(
-//                    new UsernamePasswordAuthenticationToken(userLoginDTO.getUsername(), userLoginDTO.getPassword())
-//            );
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-           try { UserDetails userDetails1 = customUserDetailsService.loadUserByUsername(userLoginDTO.getUsername());
-            final String token = jwtTokenUtil.generateToken(userDetails1);
+
+           try { UserDetails userDetails = customUserDetailsService.loadUserByUsername(userLoginDTO.getUsername());
+            final String token = jwtTokenUtil.generateToken(userDetails);
 
             UserResponseDTO userResponse = new UserResponseDTO();
-            userResponse.setUsername(userDetails1.getUsername());
-            userResponse.setRoles(userDetails1.getAuthorities().stream()
+            userResponse.setUsername(userDetails.getUsername());
+            userResponse.setRoles(userDetails.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.toSet()));
             userResponse.setToken(token);

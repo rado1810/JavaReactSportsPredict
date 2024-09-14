@@ -1,6 +1,6 @@
 package bg.web.radoweb.model.Dto;
 
-import bg.web.radoweb.model.Role;
+
 
 import java.util.Set;
 

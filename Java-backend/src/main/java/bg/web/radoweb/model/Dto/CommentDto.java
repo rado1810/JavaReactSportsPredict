@@ -1,7 +1,6 @@
 package bg.web.radoweb.model.Dto;
 
-import bg.web.radoweb.model.User;
-import jakarta.persistence.Column;
+
 
 import java.time.LocalDateTime;
 

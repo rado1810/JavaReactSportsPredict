@@ -1,14 +1,12 @@
 package bg.web.radoweb.service.Impl;
-import bg.web.radoweb.exceptions.UrlIsNotCorrect;
+
 import bg.web.radoweb.exceptions.UsernameAlreadyExistsException;
 import bg.web.radoweb.model.Dto.*;
 import bg.web.radoweb.model.Enum.UserRoles;
 import bg.web.radoweb.model.Role;
 import bg.web.radoweb.model.User;
-import bg.web.radoweb.model.VideoUrl;
 import bg.web.radoweb.repository.RolesRepository;
 import bg.web.radoweb.repository.UserRepository;
-import bg.web.radoweb.repository.VideoUrlRepository;
 import bg.web.radoweb.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -17,12 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
-
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 @Service
