@@ -46,12 +46,11 @@ const RegisterForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({  usernameToCheck }),
+        body: JSON.stringify({ username: usernameToCheck }),
       });
       
       if (response.status === 409) {
         setUsernameExistsError('Username already exists');
-        console.log("haha");
       } else {
         setUsernameExistsError('');
       }
@@ -75,8 +74,10 @@ const RegisterForm = () => {
   const handleUsernameChange = (e) => {
     const value = e.target.value;
     setUsername(value);
-    setUsernameError(validateUsername(value));
-    if (!validateUsername(value)) {
+    const validationError = validateUsername(value);
+    setUsernameError(validationError);
+
+    if (!validationError && value) {
       checkUsernameExists(value);
     }
   };
@@ -109,30 +110,58 @@ const RegisterForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (
-      !firstNameError &&
-      !secondNameError &&
-      !usernameError &&
-      !passwordError &&
-      !confirmPasswordError &&
-      !emailError &&
-      !ageError &&
-      !usernameExistsError
-    ) {
-      const response = await fetch('http://localhost:8080/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ firstName, secondName, username, password, confirmPassword, email, age }),
-      });
 
-      if (response.ok) {
-        console.log('Registration successful');
-        navigate('/login');
-      } else {
-        console.log('Registration failed');
-      }
+    if (!firstName || !secondName || !username || !password || !confirmPassword || !email || !age) {
+      alert("All fields must be filled out");
+      return;
+    }
+
+ 
+    const firstNameErr = validateFirstName(firstName);
+    const secondNameErr = validateSecondName(secondName);
+    const usernameErr = validateUsername(username);
+    const passwordErr = validatePassword(password);
+    const confirmPasswordErr = validateConfirmPassword(password, confirmPassword);
+    const emailErr = validateEmail(email);
+    const ageErr = validateAge(age);
+
+    setFirstNameError(firstNameErr);
+    setSecondNameError(secondNameErr);
+    setUsernameError(usernameErr);
+    setPasswordError(passwordErr);
+    setConfirmPasswordError(confirmPasswordErr);
+    setEmailError(emailErr);
+    setAgeError(ageErr);
+
+   
+    if (
+      firstNameErr ||
+      secondNameErr ||
+      usernameErr ||
+      passwordErr ||
+      confirmPasswordErr ||
+      emailErr ||
+      ageErr ||
+      usernameExistsError
+    ) {
+      console.log("Form cannot be submitted due to errors.");
+      return;
+    }
+
+   
+    const response = await fetch('http://localhost:8080/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstName, secondName, username, password, confirmPassword, email, age }),
+    });
+
+    if (response.ok) {
+      console.log('Registration successful');
+      navigate('/login');
+    } else {
+      console.log('Registration failed');
     }
   };
 
@@ -206,10 +235,11 @@ const RegisterForm = () => {
             />
             {ageError && <p>{ageError}</p>}
           </div>
-          <button type="submit" className="button" >Register</button>
+          <button type="submit" className="button">Register</button>
         </form>
       </div>
     </div>
   );
 };
+
 export default RegisterForm;
